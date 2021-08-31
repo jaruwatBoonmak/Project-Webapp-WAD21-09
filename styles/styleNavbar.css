@@ -1,0 +1,146 @@
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+  #headerWeb{
+    background-image: url("../images/statpic2.jpg");
+    background-size: cover;
+    padding-bottom: 500px;
+
+  }
+  .navbar {
+    overflow: hidden;
+    background-color: #e9e9e9;
+  }
+  
+  .navbar a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 18px 18px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  .navbar a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .navbar a.active {
+    background-color: #192135;
+    color: white;
+  }
+  .button {
+    width: 250px;
+    height: 250px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: 1px solid black;
+
+  }
+  .button1 {
+    background-color: white; 
+    color: black;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-155%, -50%); 
+  }
+  
+  .button1:hover {
+    background-color: #192135;
+    color: white;
+  }
+  
+  .button2 {
+
+    background-color: white; 
+    color: black;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); 
+  }
+  
+  .button2:hover {
+    background-color: #192135;
+    color: white;
+  }
+  
+  .button3 {
+
+    background-color: white; 
+    color: black;
+     margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(55%, -50%); 
+  }
+  
+  .button3:hover {
+    background-color: #192135;
+    color: white;
+  }
+  
+  .navbar input[type=text] {
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+    padding: 10px ;
+  }
+  @media screen and (max-width: 330px) {
+    .navbar a, .navbar input[type=text] {
+      float: none;
+      text-align: left;
+      width: 100%;
+      margin: 0;
+      padding: 14px;
+    }
+    .navbar input[type=text] {
+      border: 1px solid #ccc;
+    }
+    .button{
+      width: 100px;
+      height: 100px;
+      font-size: 10;
+    }
+    .button1 {
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(50, 50); 
+    }
+    .button2{
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(50, 60); 
+    }
+    .button3{
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(50, 70); 
+    }
+    .navbar a {
+      float: left;
+      display: block;
+      color: black;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+  }

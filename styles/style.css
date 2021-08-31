@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@200&display=swap');
+*{
+  font-family: 'Sarabun', sans-serif;
+  padding: 0;
+   
+}
+
+#bodyweb{
+  border-top: 10px solid black;
+  padding-top: 50px;
+
+}
+.stats, .secgrid{
+  box-sizing: border-box;
+
+}
+
+.firstgrid{
+  position:static;
+  width: 47%;
+  height: auto;
+  float: left;
+  padding-top: 20px;
+  padding-left: 150px;
+}
+
+.firstgrid h1{
+  padding-bottom: 10px;
+  font-size: 32px;
+}
+
+.firstgrid p{
+  padding-bottom: 30px;
+  font-size: 24px;
+}
+
+.secgrid{
+  padding-top: 20px;
+  padding-left: 200px;
+  position:static;
+  width: 47%;
+  height: auto;
+  float: right;
+
+}
+
+.secgrid h1{
+  font-size: 65px;
+  padding: 20px;
+}
+
+.secgrid h2{
+  font-size: 40px;
+  padding: 20px;
+
+}
+
+.thirdgrid{
+  width: 100%;
+  position: absolute;
+  top: 140%;
+    
+}
+
+  
+  canvas {
+
+    z-index: 100;
+  }
+  
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 80vh;
+  width: 80vw;
+  }
+  
+
+.news button{
+  padding: 15px 32px;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 3px;
+  position: relative;
+  left: 60%;
+  bottom: 40px;
+}
+
+.thirdgrid .newsFeed{
+  box-sizing: border-box;
+}
+
+.news{
+  float: left;
+  position: relative;
+  top: 50px;
+}
+
+.thirdgrid .newsFeed .news img{
+  width: 20%;
+  height: auto;
+  float: left;
+}
+
+.thirdgrid .newsFeed .news p{
+  padding-top: 50px;
+  width: 70%;
+  position: relative;
+  left: 120px;
+}
+
+.thirdgrid .newstext{
+
+  position: relative;
+  top: 30px;
+  font-size: 65px;
+  text-align: center;
+    
+}
+
+.news button:hover{
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+
+
+
+
+@media screen and (max-width: 420px) {
+
+  .firstgrid{
+    width: 100%;
+    text-align: center;
+
+  }
+
+  .firstgrid{
+    font-size: 20px;
+    padding-left: 0px;
+  }
+  
+  .secgrid{
+    position:static;
+    width: 100%;
+    padding-left: 0px;
+  }
+
+  .secgrid h1{
+    font-size: 40px;
+  }
+
+  .secgrid h2{
+    font-size: 30px;
+
+  }
+  
+  .thirdgrid{
+    width: 100%;
+    position: relative;
+    top: 10%;
+      
+  }
+
+  .thirdgrid .newstext{
+    position: relative;
+    top: 5%;
+    font-size: 40px;
+    text-align: center;
+      
+  }
+
+  .thirdgrid .line{
+    position: relative;
+    top: -100px;
+  }
+
+  .thirdgrid .newsFeed{
+    position: relative;
+    bottom: 20%;
+  }
+
+  .news{
+    padding-top: 70px;
+    width: 100%;
+    text-align: center
+  }
+
+
+
+  .thirdgrid .newsFeed .news img{
+    width: 45%;
+    align-items: center;
+    position: relative;
+    top: 10px;
+    left: 90px;
+
+  }
+
+  .thirdgrid .newsFeed .news p{
+    position: relative;
+    top: 0px;
+    left: 40px;
+    display:flex;
+    width: 70%;
+    
+  }
+
+
+
+  .thirdgrid .newsFeed .news button{
+    position: relative;
+    top: 40px;
+    left: 0px;
+
+  }
+  #myChart{
+    width: 150px;
+  }
+  
+}
+
+@media screen and (max-width: 770px){
+  .firstgrid{
+    width: 100%;
+    text-align: center;
+    font-size: 26px;
+    padding-left: 0px;
+    padding-top: 50px;
+  }
+  
+  .secgrid{
+    text-align: center;
+    padding-left: 0px;
+    width: 100%;
+
+
+  }
+
+  .secgrid h1{
+    font-size: 45px;
+  }
+
+  .secgrid h2{
+    font-size: 40px;
+
+  }
+  
+  .thirdgrid{
+    width: 100%;
+    position: relative;
+    top: 1200px;
+      
+  }
+
+  .thirdgrid .newstext{
+    position: relative;
+    top: -1050px;
+    font-size: 50px;
+    text-align: center;
+      
+  }
+
+  .thirdgrid .newsFeed{
+    position: relative;
+    bottom: 1150px;
+  }
+
+  .news{
+    padding-top: 70px;
+    width: 100%;
+    text-align: center
+  }
+
+
+
+  .thirdgrid .newsFeed .news img{
+    width: 45%;
+    align-items: center;
+    position: relative;
+    top: 10px;
+    left: 30%;
+
+  }
+
+  .thirdgrid .newsFeed .news p{
+    position: relative;
+    top: 0px;
+    left:20%;
+    display:flex;
+    width: 70%;
+    
+  }
+
+
+
+  .thirdgrid .newsFeed .news button{
+    position: relative;
+    top: 40px;
+    left: 0%;
+
+  }
+
+
+
+  #myChart{
+    width: 150px;
+  }
+}

@@ -1,0 +1,94 @@
+#footerweb{
+  position: relative;
+  top: 1500px;
+  width: 100%;
+  height: 300px;
+  background-color: rgb(39, 39, 48);
+}
+
+.footerLeft{
+  margin: 0;
+  position: relative;
+  bottom: 500px;
+  right: 800px;
+  width: 48%;
+  float: left;
+  color: rgb(255, 255, 255);
+}
+
+.footerCenter {
+  width: 100%;
+  color: rgb(255, 255, 255);
+  position: relative;
+  float: left;
+  text-align: center;
+  top: -400px;
+}
+
+.footerRight{
+  position: relative;
+  top: -630px;
+  float: right;
+  right: 200px;
+  color: white;
+}
+
+.footerRight p{
+  font-size: 50px;
+}
+
+@media screen and (max-width: 770px){
+  #footerweb{
+    top: 1500px;
+  }
+  .footerLeft{
+    top: -1100px;
+    left: 50px;
+    color: rgb(255, 255, 255);
+  }
+  .footerRight{
+    position: relative;
+    top: -1200px;
+    float: right;
+    right: 50px;
+    color: rgb(255, 255, 255);
+  }
+
+  .footerCenter {
+    width: 100%;
+    color: rgb(255, 255, 255);
+    top: -1000px;
+  }
+
+  
+}
+
+@media screen and (max-width: 400px){
+  #footerweb{
+    top: 1200px;
+  }
+  .footerLeft{
+    top: -900px;
+    left: 20px;
+    color: rgb(255, 255, 255);
+  }
+  .footerRight{
+    position: relative;
+    top: -1000px;
+    float: right;
+    right: 20px;
+    color: rgb(255, 255, 255);
+  }
+  .footerRight p{
+    font-size: 24px;
+  }
+
+
+  .footerCenter {
+    width: 100%;
+    color: rgb(255, 255, 255);
+    top: -800px;
+  }
+  
+  
+}

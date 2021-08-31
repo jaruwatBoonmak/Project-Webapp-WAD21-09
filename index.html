@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <title>Project Covid-19</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="styleNavbar.css">
+        <link rel="stylesheet" href="styleFooter.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+    </head>
+    <script>
+        const API_URL = 'https://corona.lmao.ninja/v2/countries/thailand';
+        async function getAPIdata() {
+            const reson = await fetch(API_URL);
+            const data = await reson.json();
+            var new_case = String(thousands_separators(data.cases));
+            var total_case_today = String(thousands_separators(data.todayCases));
+            var total_death_today = String(thousands_separators(data.todayDeaths));
+            var death = String(thousands_separators(data.deaths));
+            document.getElementById('newcase').innerHTML = `Infected   &nbsp;${new_case}`;
+            document.getElementById('newdeath').innerHTML = `Death  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${death}`;
+            document.getElementById('total_case_today').innerHTML = `New   + ${total_case_today}`;
+            document.getElementById('total_death_today').innerHTML = `Death   + ${total_death_today}`;
+            
+        }
+        function thousands_separators(num){
+            var num_parts = num.toString().split(".");
+            num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            return num_parts.join(".");
+        }
+
+  
+
+
+        getAPIdata();
+
+    </script>
+    <body>
+        <section id = "headerWeb">
+            <div class = "navbar" id = "topnav">
+                <a class = "active" href = "#">Covid-19 Statistics</a>
+                <a href="#">News</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+            <div>
+                <button class="button button1">Button</button>
+                <button class="button button2">Button</button>
+                <button class="button button3">Button</button>
+            </div>
+        </section>
+       <section id="bodyweb">
+           <div class="stats">
+                <div class="firstgrid">
+                    <h1>Covid-19 Today in Thailand</h1>
+                    <p>ข้อมูลเกี่ยวกับโรคติดเชื้อไวรัสโคโรนา 2019 (COVID-19) โดยกรมควบคุมโรค กระทรวงสาธารณสุข. </p>
+                    <canvas id="myChart" width="200px" height="110px"></canvas>
+                </div>
+                <div class="secgrid">
+
+                    <h1 id="total_case_today"></h1>
+                    <h2 id="total_death_today" style="color: red;"></h2>
+                    
+                    <h1>Summary</h1>
+
+                    <h2 id="newcase" ></h2>
+                    <h2 id="newdeath" style="color: red;"></h2>
+
+                </div>
+                <div class="thirdgrid">
+                    <div class="line" style="border: 1px solid black; width: 98%; align-items: center;"></div>
+                    <h1 class="newstext">NEWS</h1>
+                    <div class="newsFeed" "> 
+
+                        <div class="news" style="width: 100%;">
+                            <img src="images/covid-19-4960254_1280.png">
+                            <p>ข้อมูลเกี่ยวกับโรคติดเชื้อไวรัสโคโรนา 2019 (COVID-19) โดยกรมควบคุมโรค .</p>
+                            <button type="button">read more</button>
+                        </div>
+
+                        <div class="news" style="width: 100%;">
+                            <img src="images/covid-19-4960254_1280.png">
+                            <p>ข้อมูลเกี่ยวกับโรคติดเชื้อไวรัสโคโรนา 2019 (COVID-19) โดยกรมควบคุมโรค .</p>
+                            <button type="button">read more</button>
+                        </div>
+
+                        <div class="news" style="width: 100%;">
+                            <img src="images/covid-19-4960254_1280.png">
+                            <p>ข้อมูลเกี่ยวกับโรคติดเชื้อไวรัสโคโรนา 2019 (COVID-19) โดยกรมควบคุมโรค</p>
+                            <button type="button">read more</button>
+                        </div>
+
+                        
+
+                    </div>
+
+                </div>
+                
+            </div>
+        </section>
+        <section id="footerweb">
+            <div class="footerLeft">
+                <h1>Contact</h1>
+                <p>Email example</p>
+                <p>Facebook example</p>
+                <p>Twitter example</p>
+            </div>
+            <div class="footerCenter">
+                <p>Copyright © 2021 All Rights Reserved by Devoloper</p>
+            </div>
+            <div class="footerRight">
+                <p>Thank You</p>
+            </div>
+        </section>
+
+    </body>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</html>
