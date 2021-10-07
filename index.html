@@ -119,40 +119,142 @@
 
     </body>
     <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+
+        const d = new Date();
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const monthsNum = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+        var total_case1;
+        var total_case2;
+        var total_case3;
+        var total_case4;
+        var total_case5;
+        var total_case6;
+        var toDayData = `${d.getFullYear()}-${monthsNum[d.getMonth()]}-01`;
+        var toDay2Data  = `${d.getFullYear()}-${monthsNum[d.getMonth()-1]}-01`;;
+        var toDay3Data  = `${d.getFullYear()}-${monthsNum[d.getMonth()-2]}-01`;;
+        var toDay4Data = `${d.getFullYear()}-${monthsNum[d.getMonth()-3]}-01`;;
+        var toDay5Data = `${d.getFullYear()}-${monthsNum[d.getMonth()-4]}-01`;;
+        var toDay6Data = `${d.getFullYear()}-${monthsNum[d.getMonth()-5]}-01`;;
+    
+    
+        const API_URL2 = 'https://covid19.ddc.moph.go.th/api/Cases/timeline-cases-all';
+        async function getAPIdata2() {
+            const reson2 = await fetch(API_URL2);
+            const data2 = await reson2.json();
+    
+    
+    
+            // for (let i = 0; i < data2.length; i++) {
+            //     if(data2[i][1] == `${d.getFullYear}-${d.getMonth}-01`){
+            //         console.log(data2[i].txn_date)
+            //     }
+    
+            // }
+            var i = 0;
+    
+            while (true) {
+                i+=1;
+                if (data2[i].txn_date == toDayData) {
+                    total_case1 = data2[i];
+                    break;
+                }
+                if (data2[i].txn_date == toDay2Data) {
+                    total_case2 = data2[i];
+    
+                }
+                if (data2[i].txn_date == toDay3Data) {
+                    total_case3 = data2[i];
+    
+                }
+                if (data2[i].txn_date == toDay4Data) {
+                    total_case4 = data2[i];
+    
+                }
+                if (data2[i].txn_date == toDay5Data) {
+                    total_case5 = data2[i];
+    
+                }
+                if (data2[i].txn_date == toDay6Data) {
+                    total_case6 = data2[i];
+    
                 }
             }
-        });
+            var total6 = Number.parseFloat(total_case6.new_case)
+            var total5 = Number.parseFloat(total_case5.new_case)
+            var total4 = Number.parseFloat(total_case4.new_case)
+            var total3 = Number.parseFloat(total_case3.new_case)
+            var total2 = Number.parseFloat(total_case2.new_case)
+            var total1 = Number.parseFloat(total_case1.new_case)
+    
+            var totalD6 = Number.parseFloat(total_case6.new_death)
+            var totalD5 = Number.parseFloat(total_case5.new_death)
+            var totalD4 = Number.parseFloat(total_case4.new_death)
+            var totalD3 = Number.parseFloat(total_case3.new_death)
+            var totalD2 = Number.parseFloat(total_case2.new_death)
+            var totalD1 = Number.parseFloat(total_case1.new_death)
+    
+    
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [months[d.getDate() - 5] + " " + d.getFullYear(), months[d.getDate() - 4]+ " " + d.getFullYear(), months[d.getDate() - 3]+ " " + d.getFullYear(), months[d.getDate() - 2]+ " " + d.getFullYear(), months[d.getDate() - 1]+ " " + d.getFullYear(), months[d.getDate()]+ " " + d.getFullYear()],
+                    datasets: [{
+                        label: '# ติดเชื้อ',
+                        data: [total6, total5, total4, total3, total2, total1],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    },
+                    {
+                        label: '# เสียชีวิต',
+                        data: [totalD6, totalD5, totalD4, totalD3, totalD2, totalD1],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    
+        getAPIdata2()
+    
+    
     </script>
 </html>
