@@ -1,0 +1,43 @@
+
+.card{
+    width: 950px;
+
+}
+.box1{
+    position: relative;
+    padding: 150px 100px;
+    background-color: rgb(255, 0, 0);
+    float: left;
+
+}
+
+.box2{
+    position: relative;
+    padding: 150px 50px;
+    background-color: rgb(72, 72, 187);
+
+    float: left;
+
+}
+.box3{
+    position: relative;
+    padding: 150px 50px;
+    background-color: rgb(103, 113, 121);
+    float: left;
+
+}
+.box4{
+    position: relative;
+    padding: 120px 340px;
+    background-color: rgb(206, 252, 141);
+    float: left;
+    left: 20px;
+
+}
+
+.boxText{
+    padding: 20px 80px;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    top: 100px;
+}

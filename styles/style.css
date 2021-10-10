@@ -6,11 +6,9 @@
 }
 
 #bodyweb{
-  border-top: 10px solid black;
   padding-top: 50px;
-
 }
-.stats, .secgrid{
+.stats, .secgrid, .card{
   box-sizing: border-box;
 
 }
