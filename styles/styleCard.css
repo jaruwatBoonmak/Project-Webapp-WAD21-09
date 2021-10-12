@@ -5,7 +5,8 @@
 }
 .box1{
     position: relative;
-    padding: 150px 100px;
+    width: 500px;
+    height: 250px;
     background-color: rgb(255, 0, 0);
     float: left;
 
@@ -13,31 +14,41 @@
 
 .box2{
     position: relative;
-    padding: 150px 50px;
-    background-color: rgb(72, 72, 187);
+    width: 300px;
+    height: 250px;
+    background-color: rgb(121, 121, 151);
 
     float: left;
 
 }
+
 .box3{
     position: relative;
-    padding: 150px 50px;
-    background-color: rgb(103, 113, 121);
-    float: left;
-
-}
-.box4{
-    position: relative;
-    padding: 120px 340px;
+    width: 800px;
+    height: 250px;
     background-color: rgb(206, 252, 141);
     float: left;
-    left: 20px;
+
 
 }
 
 .boxText{
-    padding: 20px 80px;
+    width: 180px;
+    height: 40px;
     background-color: rgb(255, 255, 255);
     position: relative;
-    top: 100px;
+    top: 70px;
+    left: 80px;
+    align-items: center;
+
+}
+.card p{
+    position: relative;
+    text-align: center;
+    top: 50px;
+}
+
+.boxText p{
+    position: relative;
+    top: 0;
 }
