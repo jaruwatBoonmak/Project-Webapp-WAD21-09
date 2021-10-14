@@ -28,6 +28,9 @@
         </div>
     </section>
     <section id="bodyweb">
+        <br>
+            <select id="province" name="province"></select>
+        <br>
         <div class="firstgrid">
             <div class="card">
                 <div class="box1">
@@ -53,11 +56,11 @@
                 </div>
             </div>
         </div>
-        <div class="secgrid">
+        <div class="secgridnews">
 
             <h1>Covid-19 Today in Thailand</h1>
             <p>ข้อมูลเกี่ยวกับโรคติดเชื้อไวรัสโคโรนา 2019 (COVID-19) โดยกรมควบคุมโรค กระทรวงสาธารณสุข. </p>
-            <select id="year" name="year"></select>
+            <canvas id="myChart" width="200px" height="150px"></canvas>
         </div>
     </section>
 
@@ -68,8 +71,11 @@
     const API_URL2 = 'https://covid19.ddc.moph.go.th/api/Cases/today-cases-all';
 
 
-
     async function getAPIdata() {
+        var disAll=0;
+        var deaAll=0;
+        var dis=0;
+        var dea=0;
 
 
         const reson = await fetch(API_URL);
@@ -84,7 +90,7 @@
             province[i] = data[i].province;
         }
 
-        var subjectSel = document.getElementById("year");
+        var subjectSel = document.getElementById("province");
         for (var x in province) {
             subjectSel.options[subjectSel.options.length] = new Option(province[x], province[x]);
         }
@@ -95,6 +101,76 @@
         document.getElementById("new_death_total").innerHTML = data[0].total_death;
         document.getElementById("new_recovered").innerHTML = data2[0].new_recovered;
         document.getElementById("new_recovered_total").innerHTML = data2[0].total_recovered;
+
+        dis = data[0].new_case;
+        disAll = data[0].total_case;
+        dea = data[0].new_death;
+        deaAll = data[0].total_death;
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['ติดเชื้อ', 'เสียชีวิต'],
+                datasets: [{
+                    label: '# รายวัน',
+                    data: [dis, dea],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: '# รวม',
+                    data: [disAll, deaAll],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                },
+            ]
+
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    }
+                }
+            }
+        });
 
         subjectSel.addEventListener("click", function(){
             var t = subjectSel.value;
@@ -110,16 +186,32 @@
 
                     document.getElementById("new_recovered").innerHTML = data2[0].new_recovered;
                     document.getElementById("new_recovered_total").innerHTML = data2[0].total_recovered;
+
+                    dis = data[i].new_case;
+                    disAll = data[i].total_case;
+                    dea = data[i].new_death;
+                    deaAll = data[i].total_death;
+
+                    myChart.data.datasets[0].data[0] = dis;
+                    myChart.data.datasets[0].data[1] = dea;
+
+                    myChart.data.datasets[1].data[0] = disAll;
+                    myChart.data.datasets[1].data[1] = deaAll;
+                    myChart.update();
                 }
             }
+        
         });
 
+        
+        
     }
 
 
 
 
     getAPIdata();
+    
 </script>
 
 </html>

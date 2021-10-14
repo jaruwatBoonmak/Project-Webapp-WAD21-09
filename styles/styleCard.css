@@ -52,3 +52,21 @@
     position: relative;
     top: 0;
 }
+
+#province{
+    position: relative;
+    left: 25%;
+    border: 2px solid rgb(160, 160, 255);
+    padding: 10px;
+    background-color: rgb(222, 207, 250);
+}
+
+.secgridnews{
+    padding-top: 10px;
+    padding-left: 150px;
+    position:static;
+    width: 47%;
+    height: auto;
+    float: left;
+  
+  }
