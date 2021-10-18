@@ -13,14 +13,15 @@
 
     </head>
     <script>
-        const API_URL = 'https://corona.lmao.ninja/v2/countries/thailand';
+        const API_URL = 'https://covid19.ddc.moph.go.th/api/Cases/today-cases-all';
         async function getAPIdata() {
             const reson = await fetch(API_URL);
             const data = await reson.json();
-            var new_case = String(thousands_separators(data.cases));
-            var total_case_today = String(thousands_separators(data.todayCases));
-            var total_death_today = String(thousands_separators(data.todayDeaths));
-            var death = String(thousands_separators(data.deaths));
+
+            var new_case = thousands_separators(data[0].new_case);
+            var total_case_today = thousands_separators(data[0].total_case);
+            var total_death_today = thousands_separators(data[0].total_death);
+            var death = thousands_separators(data[0].new_death);
             document.getElementById('newcase').innerHTML = `Infected   &nbsp;${new_case}`;
             document.getElementById('newdeath').innerHTML = `Death  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${death}`;
             document.getElementById('total_case_today').innerHTML = `New   + ${total_case_today}`;
