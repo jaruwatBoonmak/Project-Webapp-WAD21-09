@@ -123,6 +123,7 @@
         const d = new Date();
         const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         const monthsNum = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+        var dataAllcase = [];
         var total_case1;
         var total_case2;
         var total_case3;
@@ -154,6 +155,8 @@
     
             while (true) {
                 i+=1;
+                dataAllcase.push(data2[i].new_case)
+
                 if (data2[i].txn_date == toDayData) {
                     total_case1 = data2[i];
                     break;
@@ -179,6 +182,7 @@
     
                 }
             }
+
             var total6 = Number.parseFloat(total_case6.new_case)
             var total5 = Number.parseFloat(total_case5.new_case)
             var total4 = Number.parseFloat(total_case4.new_case)
@@ -198,7 +202,6 @@
             var myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: [months[d.getMonth() - 5] + " " + d.getFullYear(), months[d.getMonth() - 4]+ " " + d.getFullYear(), months[d.getMonth() - 3]+ " " + d.getFullYear(), months[d.getMonth() - 2]+ " " + d.getFullYear(), months[d.getMonth() - 1]+ " " + d.getFullYear(), months[d.getMonth()]+ " " + d.getFullYear()],
                     datasets: [{
                         label: '# ติดเชื้อ',
                         data: [total6, total5, total4, total3, total2, total1],
@@ -244,9 +247,19 @@
                 },
                 options: {
                     responsive: true,
+
                     scales: {
-                        y: {
-                            beginAtZero: true
+                        x: {
+                            type: 'category',
+                            labels: [months[d.getMonth() - 5] + " " + d.getFullYear(), months[d.getMonth() - 4]+ " " + d.getFullYear(), months[d.getMonth() - 3]+ " " + d.getFullYear(), months[d.getMonth() - 2]+ " " + d.getFullYear(), months[d.getMonth() - 1]+ " " + d.getFullYear(), months[d.getMonth()]+ " " + d.getFullYear()],
+                            
+                            ticks: {
+                                stepSize: Math.ceil(18000)
+                            }
+                        },                      
+                        myScale: {
+                            type: 'logarithmic',
+                            position: 'left', // `axis` is determined by the position as `'y'`
                         }
                     }
                 }
