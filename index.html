@@ -22,10 +22,10 @@
             var total_case_today = thousands_separators(data[0].total_case);
             var total_death_today = thousands_separators(data[0].total_death);
             var death = thousands_separators(data[0].new_death);
-            document.getElementById('newcase').innerHTML = `Infected   &nbsp;${new_case}`;
-            document.getElementById('newdeath').innerHTML = `Death  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${death}`;
-            document.getElementById('total_case_today').innerHTML = `New   + ${total_case_today}`;
-            document.getElementById('total_death_today').innerHTML = `Death   + ${total_death_today}`;
+            document.getElementById('newcase').innerHTML = `ติดเชื้อรายใหม่ + ${new_case}`;
+            document.getElementById('newdeath').innerHTML = `เสียชีวิตวันนี้ + ${death}`;
+            document.getElementById('total_case_today').innerHTML = `ติดเชื้อ ${total_case_today}`;
+            document.getElementById('total_death_today').innerHTML = `เสียชีวิต ${total_death_today}`;
             
         }
         function thousands_separators(num){
@@ -63,17 +63,16 @@
                 </div>
                 <div class="secgrid">
 
-                    <h1 id="total_case_today"></h1>
-                    <h2 id="total_death_today" style="color: red;"></h2>
+                    <h1 id="newcase"></h1>
+                    <h2 id="newdeath" style="color: red;"></h2>
                     
                     <h1>Summary</h1>
 
-                    <h2 id="newcase" ></h2>
-                    <h2 id="newdeath" style="color: red;"></h2>
+                    <h2 id="total_case_today" ></h2>
+                    <h2 id="total_death_today" style="color: red;"></h2>
 
                 </div>
                 <div class="thirdgrid">
-                    <div class="line" style="border: 1px solid black; width: 98%; align-items: center;"></div>
                     <h1 class="newstext">NEWS</h1>
                     <div class="newsFeed" "> 
 
@@ -199,7 +198,7 @@
             var myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: [months[d.getDate() - 5] + " " + d.getFullYear(), months[d.getDate() - 4]+ " " + d.getFullYear(), months[d.getDate() - 3]+ " " + d.getFullYear(), months[d.getDate() - 2]+ " " + d.getFullYear(), months[d.getDate() - 1]+ " " + d.getFullYear(), months[d.getDate()]+ " " + d.getFullYear()],
+                    labels: [months[d.getMonth() - 5] + " " + d.getFullYear(), months[d.getMonth() - 4]+ " " + d.getFullYear(), months[d.getMonth() - 3]+ " " + d.getFullYear(), months[d.getMonth() - 2]+ " " + d.getFullYear(), months[d.getMonth() - 1]+ " " + d.getFullYear(), months[d.getMonth()]+ " " + d.getFullYear()],
                     datasets: [{
                         label: '# ติดเชื้อ',
                         data: [total6, total5, total4, total3, total2, total1],
