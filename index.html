@@ -245,8 +245,17 @@
                 options: {
                     responsive: true,
                     scales: {
-                        y: {
-                            beginAtZero: true
+                        x: {
+                            type: 'category',
+                            labels: [months[d.getMonth() - 5] + " " + d.getFullYear(), months[d.getMonth() - 4]+ " " + d.getFullYear(), months[d.getMonth() - 3]+ " " + d.getFullYear(), months[d.getMonth() - 2]+ " " + d.getFullYear(), months[d.getMonth() - 1]+ " " + d.getFullYear(), months[d.getMonth()]+ " " + d.getFullYear()],
+                            
+                            ticks: {
+                                stepSize: Math.ceil(18000)
+                            }
+                        },                      
+                        myScale: {
+                            type: 'logarithmic',
+                            position: 'left', // `axis` is determined by the position as `'y'`
                         }
                     }
                 }
