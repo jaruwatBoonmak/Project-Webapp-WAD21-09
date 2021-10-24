@@ -22,10 +22,10 @@
             var total_case_today = thousands_separators(data[0].total_case);
             var total_death_today = thousands_separators(data[0].total_death);
             var death = thousands_separators(data[0].new_death);
-            document.getElementById('newcase').innerHTML = `ติดเชื้อรายใหม่ + ${new_case}`;
-            document.getElementById('newdeath').innerHTML = `เสียชีวิตวันนี้ + ${death}`;
-            document.getElementById('total_case_today').innerHTML = `ติดเชื้อ ${total_case_today}`;
-            document.getElementById('total_death_today').innerHTML = `เสียชีวิต ${total_death_today}`;
+            document.getElementById('newcase').innerHTML = `ติดเชื้อรายใหม่ + ${new_case} คน`;
+            document.getElementById('newdeath').innerHTML = `เสียชีวิตวันนี้ + ${death} คน`;
+            document.getElementById('total_case_today').innerHTML = `ติดเชื้อ ${total_case_today} คน`;
+            document.getElementById('total_death_today').innerHTML = `เสียชีวิต ${total_death_today} คน`;
             
         }
         function thousands_separators(num){
@@ -46,12 +46,11 @@
                 <a class = "active" href = "#">Covid-19 Statistics</a>
                 <a href="news.html">News</a>
                 <a href="#">About</a>
-                <a href="#">Contact</a>
             </div>
             <div>
-                <button class="button button1">Button</button>
-                <button class="button button2">Button</button>
-                <button class="button button3">Button</button>
+                <a href="#bodyweb"><button class="button button1"><img src="images/statistics.png" width="70%" height="auto"></button></a>
+                <a href="news.html"><button class="button button2"><img src="images/news.png" width="70%" height="auto"></button></a>
+                <a href="#"><button class="button button3"><img src="images/detail.png" width="70%" height="auto"></button></a>
             </div>
         </section>
        <section id="bodyweb">
@@ -250,9 +249,6 @@
                             type: 'category',
                             labels: [months[d.getMonth() - 5] + " " + d.getFullYear(), months[d.getMonth() - 4]+ " " + d.getFullYear(), months[d.getMonth() - 3]+ " " + d.getFullYear(), months[d.getMonth() - 2]+ " " + d.getFullYear(), months[d.getMonth() - 1]+ " " + d.getFullYear(), months[d.getMonth()]+ " " + d.getFullYear()],
                             
-                            ticks: {
-                                stepSize: Math.ceil(18000)
-                            }
                         },                      
                         myScale: {
                             type: 'logarithmic',

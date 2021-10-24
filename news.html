@@ -24,7 +24,7 @@
             <a class="active" href="index.html">Covid-19 Statistics</a>
             <a href="news.html">News</a>
             <a href="#">About</a>
-            <a href="#">Contact</a>
+
         </div>
     </section>
     <section id="bodyweb">
@@ -153,20 +153,20 @@
                         'rgba(255, 159, 64, 1)'
                     ],
                     borderWidth: 1
-                },
-            ]
+                }]
 
             },
             options: {
                 scales: {
-                    y: {
-                        beginAtZero: true
+                    myScale: {
+                        type: 'logarithmic',
+                        position: 'left', // `axis` is determined by the position as `'y'`
                     }
                 },
                 responsive: true,
                 plugins: {
                     legend: {
-                        position: 'bottom',
+                        position: 'bottom'
                     }
                 }
             }
