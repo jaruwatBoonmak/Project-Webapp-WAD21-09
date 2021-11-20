@@ -5,6 +5,11 @@
    
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+
 #bodyweb{
   padding-top: 50px;
 }
