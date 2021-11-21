@@ -125,7 +125,15 @@ html {
   color: white;
 }
 
+#map{
+  position: relative;
 
+}
+
+#map h1{
+  text-align: center;
+  padding: 10px;
+}
 
 
 @media screen and (max-width: 420px) {
