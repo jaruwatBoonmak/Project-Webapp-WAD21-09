@@ -70,6 +70,7 @@
     </section>
 
 
+
 </body>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
@@ -92,12 +93,15 @@
 
         var province = [];
         var caseProvince = [];
-
+        var datasetsMap = [['City', 'ผู้ติดเชี้อ']];
 
         for (var i = 0; i <= 76; i++) {
             province[i] = data[i].province;
             caseProvince[i] = data[i].new_case;
+            datasetsMap.push([province[i],caseProvince[i]])
         }
+
+        console.log(datasetsMap)
 
         var subjectSel = document.getElementById("province");
         for (var x in province) {
@@ -219,86 +223,7 @@
         google.charts.setOnLoadCallback(drawMarkersMap);
 
         function drawMarkersMap() {
-            var data = google.visualization.arrayToDataTable([
-                ['City', 'ผู้ติดเชี้อ'],
-                ['Amnat Charoen', caseProvince[65]],
-                ['Ang Thong', caseProvince[64]],
-                ['Bangkok', caseProvince[1]],
-                ['Bueng Kan', caseProvince[24]],
-                ['Buri Ram', caseProvince[25]],
-                ['Chachoengsao', caseProvince[7]],
-                ['Chai Nat', caseProvince[9]],
-                ['Chaiyaphum', caseProvince[10]],
-                ['Chanthaburi', caseProvince[6]],
-                ['Chiang Mai', caseProvince[71]],
-                ['Chiang Rai', caseProvince[70]],
-                ['Chon Buri', caseProvince[8]],
-                ['Chumphon', caseProvince[11]],
-                ['Kalasin', caseProvince[3]],
-                ['Kamphaeng Phet', caseProvince[4]],
-                ['Kanchanaburi', caseProvince[2]],
-                ['Khon Kaen', caseProvince[5]],
-                ['Krabi', caseProvince[0]],
-                ['Lampang', caseProvince[46]],
-                ['Lamphun', caseProvince[47]],
-                ['Loei', caseProvince[74]],
-                ['Lop Buri', caseProvince[45]],
-                ['Mae Hong Son', caseProvince[76]],
-                ['Maha Sarakham', caseProvince[37]],
-                ['Mukdahan', caseProvince[38]],
-                ['Nakhon Nayok', caseProvince[15]],
-                ['Nakhon Pathom', caseProvince[16]],
-                ['Nakhon Phanom', caseProvince[17]],
-                ['Nakhon Ratchasima', caseProvince[18]],
-                ['Nakhon Sawan', caseProvince[20]],
-                ['Nakhon Si Thammarat', caseProvince[19]],
-                ['Nan', caseProvince[23]],
-                ['Narathiwat', caseProvince[22]],
-                ['Nong Bua Lam Phu', caseProvince[63]],
-                ['Nong Khai', caseProvince[62]],
-                ['Nonthaburi', caseProvince[21]],
-                ['Pathum Thani', caseProvince[26]],
-                ['Pattani', caseProvince[29]],
-                ['Phangnga', caseProvince[32]],
-                ['Phatthalung', caseProvince[33]],
-                ['Phayao', caseProvince[31]],
-                ['Phetchabun', caseProvince[73]],
-                ['Phetchaburi', caseProvince[72]],
-                ['Phichit', caseProvince[34]],
-                ['Phitsanulok', caseProvince[35]],
-                ['Phrae', caseProvince[75]],
-                ['Phra Nakhon Si Ayutthaya', caseProvince[30]],
-                ['Phuket', caseProvince[36]],
-                ['Prachin Buri', caseProvince[28]],
-                ['Prachuap Khiri Khan', caseProvince[27]],
-                ['Ranong', caseProvince[42]],
-                ['Ratchaburi', caseProvince[44]],
-                ['Rayong', caseProvince[43]],
-                ['Roi Et', caseProvince[41]],
-                ['Sa Kaeo', caseProvince[56]],
-                ['Sakon Nakhon', caseProvince[49]],
-                ['Samut Prakan', caseProvince[52]],
-                ['Samut Sakhon', caseProvince[54]],
-                ['Samut Songkhram', caseProvince[53]],
-                ['Saraburi', caseProvince[55]],
-                ['Satun', caseProvince[51]],
-                ['Sing Buri', caseProvince[57]],
-                ['Si Sa Ket', caseProvince[48]],
-                ['Songkhla', caseProvince[50]],
-                ['Sukhothai', caseProvince[61]],
-                ['Suphan Buri', caseProvince[58]],
-                ['Surat Thani', caseProvince[59]],
-                ['Surin', caseProvince[60]],
-                ['Tak', caseProvince[14]],
-                ['Trang', caseProvince[12]],
-                ['Trat', caseProvince[13]],
-                ['Ubon Ratchathani', caseProvince[69]],
-                ['Udon Thani', caseProvince[66]],
-                ['Uthai Thani', caseProvince[68]],
-                ['Uttaradit', caseProvince[67]],
-                ['Yala', caseProvince[39]],
-                ['Yasothon', caseProvince[40]]
-            ]);
+            var data = google.visualization.arrayToDataTable(datasetsMap);
 
             var options = {
                 region: 'TH',
@@ -309,7 +234,6 @@
             };
 
             var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-
             chart.draw(data, options);
         }
 
