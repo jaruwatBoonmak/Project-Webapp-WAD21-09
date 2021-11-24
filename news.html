@@ -44,23 +44,17 @@
                 <div class="box1">
                     <p>New Case</p>
                     <p id="new_case"></p>
-                    <div class="boxText">
-                        <p id="new_case_total"></p>
-                    </div>
+                    <p id="new_case_total"></p>
                 </div>
                 <div class="box2">
                     <p>New Death</p>
                     <p id="new_death"></p>
-                    <div class="boxText">
-                        <p id="new_death_total"></p>
-                    </div>
+                    <p id="new_death_total"></p>
                 </div>
                 <div class="box3">
                     <p>Recovery</p>
                     <p id="new_recovered"></p>
-                    <div class="boxText">
-                        <p id="new_recovered_total"></p>
-                    </div>
+                    <p id="new_recovered_total"></p>
                 </div>
             </div>
         </div>
@@ -108,12 +102,14 @@
             subjectSel.options[subjectSel.options.length] = new Option(province[x], province[x]);
         }
 
-        document.getElementById("new_case").innerHTML = data[0].new_case;
-        document.getElementById("new_case_total").innerHTML = data[0].total_case;
-        document.getElementById("new_death").innerHTML = data[0].new_death;
-        document.getElementById("new_death_total").innerHTML = data[0].total_death;
-        document.getElementById("new_recovered").innerHTML = data2[0].new_recovered;
-        document.getElementById("new_recovered_total").innerHTML = data2[0].total_recovered;
+        document.getElementById("new_case").innerHTML = thousands_separators(data[0].new_case) +' ราย';
+                    document.getElementById("new_case_total").innerHTML = 'รวม '+thousands_separators(data[0].total_case) +' ราย';
+
+                    document.getElementById("new_death").innerHTML = thousands_separators(data[0].new_death) +' ราย';
+                    document.getElementById("new_death_total").innerHTML = 'รวม ' + thousands_separators(data[0].total_death) +' ราย';
+
+                    document.getElementById("new_recovered").innerHTML = thousands_separators(data2[0].new_recovered)+' ราย';
+                    document.getElementById("new_recovered_total").innerHTML = 'รวม ' + thousands_separators(data2[0].total_recovered)+' ราย';
 
         dis = data[0].new_case;
         disAll = data[0].total_case;
@@ -129,19 +125,10 @@
                     label: '# รายวัน',
                     data: [dis, dea],
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
+                        
                         'rgba(255, 159, 64, 0.2)'
                     ],
                     borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
                         'rgba(255, 159, 64, 1)'
                     ],
                     borderWidth: 1
@@ -150,20 +137,11 @@
                     label: '# รวม',
                     data: [disAll, deaAll],
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
+                        'rgba(54, 162, 235, 0.2)'
+                    
                     ],
                     borderColor: [
-                        'rgba(255, 99, 132, 1)',
                         'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
                     ],
                     borderWidth: 1
                 }]
@@ -186,19 +164,25 @@
             }
         });
 
+        function thousands_separators(num){
+            var num_parts = num.toString().split(".");
+            num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            return num_parts.join(".");
+        }
+
         subjectSel.addEventListener("click", function () {
             var t = subjectSel.value;
             for (var i in province) {
                 if (t == province[i]) {
                     console.log(data[i].new_case)
-                    document.getElementById("new_case").innerHTML = data[i].new_case;
-                    document.getElementById("new_case_total").innerHTML = data[i].total_case;
+                    document.getElementById("new_case").innerHTML = thousands_separators(data[i].new_case)+' ราย';
+                    document.getElementById("new_case_total").innerHTML = 'รวม '+thousands_separators(data[i].total_case)+' ราย';
 
-                    document.getElementById("new_death").innerHTML = data[i].new_death;
-                    document.getElementById("new_death_total").innerHTML = data[i].total_death;
+                    document.getElementById("new_death").innerHTML = thousands_separators(data[i].new_death)+' ราย';
+                    document.getElementById("new_death_total").innerHTML = 'รวม '+thousands_separators(data[i].total_death)+' ราย';
 
-                    document.getElementById("new_recovered").innerHTML = data2[0].new_recovered;
-                    document.getElementById("new_recovered_total").innerHTML = data2[0].total_recovered;
+                    document.getElementById("new_recovered").innerHTML = thousands_separators(data2[0].new_recovered)+' ราย';
+                    document.getElementById("new_recovered_total").innerHTML = 'รวม '+thousands_separators(data2[0].total_recovered)+' ราย';
 
                     dis = data[i].new_case;
                     disAll = data[i].total_case;
