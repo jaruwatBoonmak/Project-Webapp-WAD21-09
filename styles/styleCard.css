@@ -64,9 +64,110 @@
 .secgridnews{
     padding-top: 10px;
     padding-left: 150px;
-    position:static;
+    position:relative;
     width: 47%;
     height: auto;
     float: left;
   
-  }
+}
+
+@media screen and (max-width: 1030px){
+    #province{
+        left: 45%;
+    }
+    .card{
+        width: 1200px;
+    
+    }
+    .box1{
+        width: 500px;
+    }
+    
+    .box2{
+
+        width: 450px;
+
+    }
+    
+    .box3{
+        width: 950px;
+    }
+    .secgridnews{
+        right: 60px;
+        width: 100%;
+      
+    }
+  
+    
+}
+
+@media screen and (max-width: 770px){
+
+    .card{
+        width: 950px;
+    
+    }
+    .box1{
+        width: 450px;
+    }
+    
+    .box2{
+
+        width: 300px;
+
+    }
+    
+    .box3{
+        width: 750px;
+    }
+    .secgridnews{
+        right: 60px;
+        width: 100%;
+      
+    }
+
+    #province{
+        left: 40%;
+    }
+
+}
+
+@media screen and (max-width: 400px){
+
+    #province{
+        left: 30%;
+    }
+
+    .card{
+        width: 100%;
+    
+    }
+
+    .box1{
+        width: 100%;
+    }
+    
+    .box2{
+
+        width: 100%;
+
+    }
+    
+    .box3{
+        width: 100%;
+    }
+
+    .boxText{
+        width: 180px;
+        left: 25%;
+    
+    }
+    .secgridnews{
+        right: 60px;
+        width: 100%;
+      
+    }
+
+    
+
+}

@@ -1,3 +1,7 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 #footerweb{
   position: relative;
   top: 1500px;
@@ -9,7 +13,7 @@
 .footerLeft{
   margin: 0;
   position: relative;
-  bottom: 500px;
+  bottom: 400px;
   right: 800px;
   width: 48%;
   float: left;
@@ -22,12 +26,12 @@
   position: relative;
   float: left;
   text-align: center;
-  top: -400px;
+  top: -350px;
 }
 
 .footerRight{
   position: relative;
-  top: -630px;
+  top: -530px;
   float: right;
   right: 200px;
   color: white;
@@ -37,9 +41,36 @@
   font-size: 50px;
 }
 
+
+@media screen and (max-width: 1030px){
+  #footerweb{
+    top: 1300px;
+  }
+  .footerLeft{
+    top: -1000px;
+    left: 50px;
+    color: rgb(255, 255, 255);
+  }
+  .footerRight{
+    position: relative;
+    top: -1100px;
+    float: right;
+    right: 50px;
+    color: rgb(255, 255, 255);
+  }
+
+  .footerCenter {
+    width: 100%;
+    color: rgb(255, 255, 255);
+    top: -900px;
+  }
+
+  
+}
+
 @media screen and (max-width: 770px){
   #footerweb{
-    top: 1500px;
+    top: 1400px;
   }
   .footerLeft{
     top: -1100px;
@@ -65,16 +96,17 @@
 
 @media screen and (max-width: 400px){
   #footerweb{
-    top: 1200px;
+    top: 1780px;
   }
   .footerLeft{
-    top: -900px;
+    top: -1550px;
     left: 20px;
     color: rgb(255, 255, 255);
+
   }
   .footerRight{
     position: relative;
-    top: -1000px;
+    top: -1720px;
     float: right;
     right: 20px;
     color: rgb(255, 255, 255);
@@ -87,7 +119,7 @@
   .footerCenter {
     width: 100%;
     color: rgb(255, 255, 255);
-    top: -800px;
+    top: -1520px;
   }
   
   

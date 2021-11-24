@@ -22,14 +22,14 @@
     <section>
         <div class="navbar" id="topnav">
             <a class="active" href="index.html">Covid-19 Statistics</a>
-            <a href="news.html">News</a>
+            <a href="news.html">Statistics</a>
             <a href="About.html">About</a>
 
         </div>
     </section>
     <section id="map">
         <h1>Covid-19 Map Today</h1>
-        <div id="regions_div" style="width: 100%; height: 800px;"></div>
+        <div id="regions_div" ></div>
     </section>
     <div style="text-align: center; padding-top: 50px;">
         <h1>Covid-19 Today in Thailand</h1>
@@ -65,9 +65,10 @@
             </div>
         </div>
         <div class="secgridnews">
-            <canvas id="myChart" width="200px" height="150px"></canvas>
+            <canvas id="myChart2" width="200px" height="150px"></canvas>
         </div>
     </section>
+    <div class="footNEWS"></div>
 
 
 
@@ -119,7 +120,7 @@
         dea = data[0].new_death;
         deaAll = data[0].total_death;
 
-        var ctx = document.getElementById('myChart').getContext('2d');
+        var ctx = document.getElementById('myChart2').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
