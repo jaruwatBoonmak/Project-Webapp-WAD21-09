@@ -13,8 +13,11 @@
 
     </head>
     <script>
+        
         const API_URL = 'https://covid19.ddc.moph.go.th/api/Cases/today-cases-all';
         async function getAPIdata() {
+            
+
             const reson = await fetch(API_URL);
             const data = await reson.json();
 
@@ -22,10 +25,10 @@
             var total_case_today = thousands_separators(data[0].total_case);
             var total_death_today = thousands_separators(data[0].total_death);
             var death = thousands_separators(data[0].new_death);
-            document.getElementById('newcase').innerHTML = `ติดเชื้อรายใหม่ + ${new_case}`;
-            document.getElementById('newdeath').innerHTML = `เสียชีวิตวันนี้ + ${death}`;
-            document.getElementById('total_case_today').innerHTML = `ติดเชื้อ ${total_case_today}`;
-            document.getElementById('total_death_today').innerHTML = `เสียชีวิต ${total_death_today}`;
+            document.getElementById('newcase').innerHTML = `ติดเชื้อรายใหม่ + ${new_case} คน`;
+            document.getElementById('newdeath').innerHTML = `เสียชีวิตวันนี้ + ${death} คน`;
+            document.getElementById('total_case_today').innerHTML = `ติดเชื้อ ${total_case_today} คน`;
+            document.getElementById('total_death_today').innerHTML = `เสียชีวิต ${total_death_today} คน`;
             
         }
         function thousands_separators(num){
@@ -43,15 +46,14 @@
     <body>
         <section id = "headerWeb">
             <div class = "navbar" id = "topnav">
-                <a class = "active" href = "#">Covid-19 Statistics</a>
+                <a class = "active" href = "index.html">Covid-19 Statistics</a>
                 <a href="news.html">News</a>
-                <a href="#">About</a>
-                <a href="#">Contact</a>
+                <a href="About.html">About</a>
             </div>
             <div>
-                <button class="button button1">Button</button>
-                <button class="button button2">Button</button>
-                <button class="button button3">Button</button>
+                <a href="#bodyweb"><button class="button button1"><img src="images/statistics.png" width="70%" height="auto"></button></a>
+                <a href="news.html"><button class="button button2"><img src="images/news.png" width="70%" height="auto"></button></a>
+                <a href="#Info"><button class="button button3"><img src="images/detail.png" width="70%" height="auto"></button></a>
             </div>
         </section>
        <section id="bodyweb">
@@ -73,25 +75,26 @@
 
                 </div>
                 <div class="thirdgrid">
-                    <h1 class="newstext">NEWS</h1>
-                    <div class="newsFeed" "> 
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    <h2 id="Info" class="newstext">ข้อมูลเกี่ยวกับโคโรน่าไวรัส</h2><br>
+                    <div class="newsFeed"> 
 
                         <div class="news" style="width: 100%;">
-                            <img src="images/covid-19-4960254_1280.png">
-                            <p>ข้อมูลเกี่ยวกับโรคติดเชื้อไวรัสโคโรนา 2019 (COVID-19) โดยกรมควบคุมโรค .</p>
-                            <button type="button">read more</button>
+                            <img id = "vir" src="images/coronavirus.png">
+                            <p>ข้อมูลการป้องกันตัวจากโรคติดเชื้อไวรัสโคโรนา 2019 (COVID-19) ข้อมูลจาก องค์กรอนามัยโลก <br>และกรมควบคุมโรค .</p>
+                            <a href="InfoPrev.html"><button  type="button">read now</button></a>
                         </div>
 
                         <div class="news" style="width: 100%;">
-                            <img src="images/covid-19-4960254_1280.png">
-                            <p>ข้อมูลเกี่ยวกับโรคติดเชื้อไวรัสโคโรนา 2019 (COVID-19) โดยกรมควบคุมโรค .</p>
-                            <button type="button">read more</button>
+                            <img id = "pr" src="images/covid-19-4960254_1280.png">
+                            <p>แนวทางการปฏิบัติเมื่อไดรับเชื้อไวรัสโคโรนา 2019 (COVID-19) โดยกรมควบคุมโรค .</p>
+                            <a href = "infoInfected.html"><button type="button">read now</button></a>
                         </div>
 
                         <div class="news" style="width: 100%;">
-                            <img src="images/covid-19-4960254_1280.png">
-                            <p>ข้อมูลเกี่ยวกับโรคติดเชื้อไวรัสโคโรนา 2019 (COVID-19) โดยกรมควบคุมโรค</p>
-                            <button type="button">read more</button>
+                            <img id ="vac" src="images/vaccine.png">
+                            <p>แนวทางการปฏิบัติตัวสำหรับฉีดวัคซีนไวรัสโคโรนา 2019 (COVID-19)</p>
+                            <a href="infoVaccine.html"><button type="button">read now</button></a>
                         </div>
 
                         
@@ -179,6 +182,7 @@
     
                 }
             }
+
             var total6 = Number.parseFloat(total_case6.new_case)
             var total5 = Number.parseFloat(total_case5.new_case)
             var total4 = Number.parseFloat(total_case4.new_case)
@@ -198,7 +202,6 @@
             var myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: [months[d.getMonth() - 5] + " " + d.getFullYear(), months[d.getMonth() - 4]+ " " + d.getFullYear(), months[d.getMonth() - 3]+ " " + d.getFullYear(), months[d.getMonth() - 2]+ " " + d.getFullYear(), months[d.getMonth() - 1]+ " " + d.getFullYear(), months[d.getMonth()]+ " " + d.getFullYear()],
                     datasets: [{
                         label: '# ติดเชื้อ',
                         data: [total6, total5, total4, total3, total2, total1],
@@ -244,9 +247,16 @@
                 },
                 options: {
                     responsive: true,
+
                     scales: {
-                        y: {
-                            beginAtZero: true
+                        x: {
+                            type: 'category',
+                            labels: [months[d.getMonth() - 5] + " " + d.getFullYear(), months[d.getMonth() - 4]+ " " + d.getFullYear(), months[d.getMonth() - 3]+ " " + d.getFullYear(), months[d.getMonth() - 2]+ " " + d.getFullYear(), months[d.getMonth() - 1]+ " " + d.getFullYear(), months[d.getMonth()]+ " " + d.getFullYear()],
+                            
+                        },                      
+                        myScale: {
+                            type: 'logarithmic',
+                            position: 'left', // `axis` is determined by the position as `'y'`
                         }
                     }
                 }

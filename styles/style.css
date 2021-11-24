@@ -5,6 +5,11 @@
    
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+
 #bodyweb{
   padding-top: 50px;
 }
@@ -90,7 +95,7 @@
 .news{
   float: left;
   position: relative;
-  top: 50px;
+  top: 10px;
 }
 
 .thirdgrid .newsFeed .news img{
@@ -120,7 +125,19 @@
   color: white;
 }
 
+#map{
+  position: relative;
 
+}
+
+#map h1{
+  text-align: center;
+  padding: 10px;
+}
+#pr,#vir,#vac{
+  width: 15%;
+  height: 15%;
+}
 
 
 @media screen and (max-width: 420px) {
@@ -296,9 +313,6 @@
     left: 0%;
 
   }
-
-
-
   #myChart{
     width: 150px;
   }

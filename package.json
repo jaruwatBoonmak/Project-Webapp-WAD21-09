@@ -1,0 +1,23 @@
+{
+  "name": "project-webapp-wad21-09",
+  "version": "1.0.0",
+  "description": "",
+  "main": "data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaruwatBoonmak/Project-Webapp-WAD21-09.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaruwatBoonmak/Project-Webapp-WAD21-09/issues"
+  },
+  "homepage": "https://github.com/jaruwatBoonmak/Project-Webapp-WAD21-09#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "fs": "0.0.1-security"
+  }
+}

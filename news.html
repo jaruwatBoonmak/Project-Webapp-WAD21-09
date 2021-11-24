@@ -23,13 +23,21 @@
         <div class="navbar" id="topnav">
             <a class="active" href="index.html">Covid-19 Statistics</a>
             <a href="news.html">News</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+            <a href="About.html">About</a>
+
         </div>
     </section>
+    <section id="map">
+        <h1>Covid-19 Map Today</h1>
+        <div id="regions_div" style="width: 100%; height: 800px;"></div>
+    </section>
+    <div style="text-align: center; padding-top: 50px;">
+        <h1>Covid-19 Today in Thailand</h1>
+        <p>ข้อมูลเกี่ยวกับโรคติดเชื้อไวรัสโคโรนา 2019 (COVID-19) โดยกรมควบคุมโรค กระทรวงสาธารณสุข. </p>
+    </div>
     <section id="bodyweb">
         <br>
-            <select id="province" name="province"></select>
+        <select id="province" name="province"></select>
         <br>
         <div class="firstgrid">
             <div class="card">
@@ -57,25 +65,24 @@
             </div>
         </div>
         <div class="secgridnews">
-
-            <h1>Covid-19 Today in Thailand</h1>
-            <p>ข้อมูลเกี่ยวกับโรคติดเชื้อไวรัสโคโรนา 2019 (COVID-19) โดยกรมควบคุมโรค กระทรวงสาธารณสุข. </p>
             <canvas id="myChart" width="200px" height="150px"></canvas>
         </div>
     </section>
 
 
+
 </body>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
     const API_URL = 'https://covid19.ddc.moph.go.th/api/Cases/today-cases-by-provinces';
     const API_URL2 = 'https://covid19.ddc.moph.go.th/api/Cases/today-cases-all';
 
 
     async function getAPIdata() {
-        var disAll=0;
-        var deaAll=0;
-        var dis=0;
-        var dea=0;
+        var disAll = 0;
+        var deaAll = 0;
+        var dis = 0;
+        var dea = 0;
 
 
         const reson = await fetch(API_URL);
@@ -85,10 +92,15 @@
         const data2 = await reson2.json();
 
         var province = [];
+        var caseProvince = [];
+        var datasetsMap = [['City', 'ผู้ติดเชี้อ']];
 
         for (var i = 0; i <= 76; i++) {
             province[i] = data[i].province;
+            caseProvince[i] = data[i].new_case;
+            datasetsMap.push([province[i],caseProvince[i]])//dataset for map in thailand
         }
+
 
         var subjectSel = document.getElementById("province");
         for (var x in province) {
@@ -153,30 +165,30 @@
                         'rgba(255, 159, 64, 1)'
                     ],
                     borderWidth: 1
-                },
-            ]
+                }]
 
             },
             options: {
+                responsive: true,
                 scales: {
-                    y: {
-                        beginAtZero: true
+                    myScale: {
+                        type: 'logarithmic',
+                        position: 'left', // `axis` is determined by the position as `'y'`
                     }
                 },
                 responsive: true,
                 plugins: {
                     legend: {
-                        position: 'bottom',
+                        position: 'bottom'
                     }
                 }
             }
         });
 
-        subjectSel.addEventListener("click", function(){
+        subjectSel.addEventListener("click", function () {
             var t = subjectSel.value;
-            for(var i in province){
-                if(t==province[i])
-                {
+            for (var i in province) {
+                if (t == province[i]) {
                     console.log(data[i].new_case)
                     document.getElementById("new_case").innerHTML = data[i].new_case;
                     document.getElementById("new_case_total").innerHTML = data[i].total_case;
@@ -200,18 +212,38 @@
                     myChart.update();
                 }
             }
-        
+
         });
 
-        
-        
+        google.charts.load('current', {
+            'packages': ['geochart'],
+            'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+        });
+        google.charts.setOnLoadCallback(drawMarkersMap);
+
+        function drawMarkersMap() {
+            var data = google.visualization.arrayToDataTable(datasetsMap);
+
+            var options = {
+                region: 'TH',
+                backgroundColor: '#e6e1f6',
+                datalessRegionColor: '#e6e1f6',
+                displayMode: 'regions',
+                resolution: 'provinces'
+            };
+
+            var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+            chart.draw(data, options);
+        }
+
+
+
     }
 
-
-
-
     getAPIdata();
-    
+
+
+
 </script>
 
 </html>
